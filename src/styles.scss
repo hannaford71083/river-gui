@@ -1,0 +1,40 @@
+@use '~@angular/material' as mat;
+
+@include mat.core();
+
+$portfolio-primary: mat.define-palette(mat.$indigo-palette);
+$portfolio-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$portfolio-warn: mat.define-palette(mat.$red-palette); // The warn palette is optional (defaults to red).
+$portfolio-typography: mat.define-typography-config(
+    $font-family: 'Gil Sans MT',
+  );
+
+$portfolio-theme: mat.define-light-theme((
+  color: (
+    primary: $portfolio-primary,
+    accent: $portfolio-accent,
+    warn: $portfolio-warn,
+  ),
+  typography: $portfolio-typography,
+));
+
+$heading-font-family: "'Gil Sans MT', sans-serif";
+$typography: mat.define-typography-config(
+  $display-4: mat.define-typography-level(112px, $font-family: $heading-font-family),
+  $display-3: mat.define-typography-level(56px, $font-family: $heading-font-family),
+  $display-2: mat.define-typography-level(45px, $font-family: $heading-font-family),
+  $display-1: mat.define-typography-level(34px, $font-family: $heading-font-family),
+  $headline: mat.define-typography-level(24px, $font-family: $heading-font-family),
+  $title: mat.define-typography-level(20px, $font-family: $heading-font-family),
+);
+
+@include mat.all-component-themes($portfolio-theme);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "/src/styles/font-face";
+@import "/src/styles/base";
+@import "/src/styles/utility";
+@import "/src/styles/buttons";

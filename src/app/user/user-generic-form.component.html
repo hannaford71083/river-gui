@@ -1,0 +1,85 @@
+<mat-card>
+  <form class="example-form" [formGroup]="userForm" (ngSubmit)="submit()">
+
+    <mat-form-field appearance="fill" class="mb-3">
+        <mat-label>Title</mat-label>
+        <mat-select formControlName="title" #titleInput>
+            <mat-option>Please select...</mat-option>
+            <mat-option value="Mr">Mr</mat-option>
+            <mat-option value="Miss">Miss</mat-option>
+            <mat-option value="Mrs">Mrs</mat-option>
+            <mat-option value="Dr">Dr</mat-option>
+            <mat-option value="none">Prefer not to say</mat-option>
+        </mat-select>
+        <mat-error>Title is required</mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="fill" class="mb-3">
+        <mat-label>First Name</mat-label>
+        <input matInput maxlength="30" inputmode="tel" formControlName="firstName" #firstNameInput>
+        <mat-error>First Name is required</mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="fill" class="mb-3">
+        <mat-label>Last Name</mat-label>
+        <input matInput maxlength="30" inputmode="tel" formControlName="lastName" #lastNameInput>
+        <mat-error>Last Name is required</mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="fill" class="mb-3">
+        <mat-label>Email</mat-label>
+        <input matInput maxlength="30" inputmode="tel" formControlName="email" #emailInput>
+        <mat-error *ngIf="(userForm.get('email'))?.errors?.required">Email is required</mat-error>
+        <mat-error *ngIf="(userForm.get('email'))?.errors?.pattern">Please enter valid email</mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="fill" class="mb-3">
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role" #roleInput>
+            <mat-option>Please select...</mat-option>
+            <mat-option value="User">User</mat-option>
+            <mat-option value="Admin">Admin</mat-option>
+        </mat-select>
+        <mat-error>Role is required</mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="fill" *ngIf="passwordFieldsVisible" >
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password"  autocomplete="off" >
+        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+          <mat-icon>{{!hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-hint>6-30 characters long</mat-hint>
+        <mat-error *ngIf="(userForm.get('password'))?.errors?.required">Password is required</mat-error>
+        <mat-error *ngIf="(userForm.get('password'))?.errors?.minlength">Password under min length</mat-error>
+        <mat-error *ngIf="(userForm.get('password'))?.errors?.maxlength">Password over max length</mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="fill" *ngIf="passwordFieldsVisible">
+        <mat-label>Re-enter password</mat-label>
+        <input matInput [type]="hideConfirmPassword ? 'password' : 'text'" formControlName="confirmPassword" autocomplete="off" >
+        <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPassword">
+          <mat-icon>{{!hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-hint>6-30 characters long</mat-hint>
+        <mat-error *ngIf="(userForm.get('confirmPassword'))?.errors?.required">Password is required</mat-error>
+        <mat-error *ngIf="(userForm.get('confirmPassword'))?.errors?.minlength">Password under min length</mat-error>
+        <mat-error *ngIf="(userForm.get('confirmPassword'))?.errors?.maxlength">Password over max length</mat-error>
+        <mat-error *ngIf="(userForm.get('confirmPassword'))?.errors?.confirmPasswordValidator">Passwords must match</mat-error>
+    </mat-form-field>
+
+
+
+    <div class="mt-5 flex justify-end">
+        <div class="list-button general-button mr-2 w-28" (click)="back()"><mat-icon>arrow_back</mat-icon>Back</div>
+        <button type="submit" class="list-button general-button w-28" >Submit<mat-icon>add</mat-icon></button>
+    </div>
+
+  </form>
+</mat-card>

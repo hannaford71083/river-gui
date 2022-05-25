@@ -1,0 +1,24 @@
+<div class="nav-menu__container">
+
+    <div class="nav-menu__mobile" >
+        <button mat-icon-button [matMenuTriggerFor]="menu" color="primary" aria-label="Example icon button with a menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" backgroundColor="red" class="special-class">
+            <a mat-menu-item href="#/"  >Home</a>
+            <a mat-menu-item href="#/user/list"  >User List</a>
+            <a mat-menu-item href="#/user/create"  >Create User</a>
+        </mat-menu>
+    </div>
+
+    <div class="nav-menu__buttons">
+        <a mat-button href="#/"  >Home</a>
+        <a mat-button href="#/user/list"  >User List</a>
+        <a mat-button href="#/user/create"  >Create User</a>
+    </div>
+
+    <div class="nav-menu__logo">
+        <img src="../../assets/images/river-logo.PNG" alt="river logo" />
+    </div>
+
+</div>

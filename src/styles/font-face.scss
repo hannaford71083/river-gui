@@ -1,0 +1,12 @@
+@font-face {
+    font-display: swap;
+    font-family: 'Gil Sans MT';
+    font-style: normal;
+    font-weight: 400;
+    src: url("../assets/fonts/gill-sans-mt/gil-sans-mt.woff2") format('woff2'),
+        url("../assets/fonts/gill-sans-mt/gil-sans-mt.TTF") format('truetype');
+}
+
+* { font-family: "Gil Sans MT", "Helvetica Neue", sans-serif !important; }
+
+.material-icons { font-family: 'Material Icons' !important;}
